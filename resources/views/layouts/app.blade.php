@@ -9,22 +9,22 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
     <!-- Styles -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"  />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
+            --primary: #2B599E;
+            --primary-dark: #254b83;
             --secondary: #64748b;
-            --success: #10b981;
-            --danger: #ef4444;
-            --warning: #f59e0b;
+            --secondary-dark: #5e6878;
+            --success: #13A28F;
             --info: #3b82f6;
-            --light: #f8fafc;
-            --dark: #0f172a;
+            --warning: #f59e0b;
+            --light-bg: #f8fafc;
+            --card-gradient: linear-gradient(135deg, #f5f7fa 0%, #eef1f6 100%);
+            --dark-card-gradient: linear-gradient(135deg, #1E293B, #334155);
         }
 
         * {
@@ -32,7 +32,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-color: var(--light-bg);
             min-height: 100vh;
         }
 
@@ -44,123 +44,95 @@
 
         .card {
             border: none;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
         }
 
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-primary-gradient { background: linear-gradient(135deg, #3498db, #2980b9); }
+        .card-secondary-gradient { background: linear-gradient(135deg, #64748b, #4b5563); }
+        .card-success-gradient { background: linear-gradient(135deg, #13A28F, #0f8877); }
+        .card-dark-gradient { background: linear-gradient(135deg, #2B599E, #254b83); }
+
         .btn {
-            border-radius: 12px;
+            border-radius: 9999px;
             font-weight: 600;
-            padding: 12px 24px;
+            padding: 8px 16px;
             transition: all 0.3s ease;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border: none;
+            background-color: var(--primary);
+            border-color: var(--primary);
             color: white;
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-1px);
         }
 
+        .btn-outline-secondary {
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+            color: white;
+        }
         .btn-outline-primary {
-            border: 2px solid var(--primary);
-            color: var(--primary);
+             color: var(--primary);
+             border-color: var(--primary);
         }
-
         .btn-outline-primary:hover {
-            background: var(--primary);
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .form-control {
-            border-radius: 12px;
-            border: 2px solid #e2e8f0;
-            padding: 12px 16px;
-            transition: all 0.3s ease;
-        }
-
-        .form-control:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+            background-color: var(--primary);
+            color: #fff;
         }
 
         .table {
             background: white;
-            border-radius: 15px;
+            border-radius: 12px;
             overflow: hidden;
         }
 
+        .table-hover tbody tr:hover {
+            background-color: var(--light-bg);
+        }
+
         .badge {
-            padding: 8px 12px;
-            border-radius: 8px;
+            padding: 6px 10px;
+            border-radius: 9999px;
             font-weight: 500;
         }
-
-        .plan-card {
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .plan-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-        }
-
-        .plan-popular {
-            position: relative;
-            border: 2px solid var(--primary) !important;
-        }
-
-        .plan-popular::before {
-            content: 'Most Popular';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 6px 20px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .stats-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 20px;
-        }
-
-        .loading {
-            display: none;
-        }
-
-        .loading.show {
-            display: inline-block;
-        }
+        .badge.bg-primary { background-color: var(--primary) !important; }
+        .badge.bg-success { background-color: var(--success) !important; }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
         .fade-in-up {
             animation: fadeInUp 0.6s ease-out;
         }
+        .text-white-50 {
+            color: rgba(255,255,255,0.5);
+        }
     </style>
+    @stack('head')
 </head>
 <body>
     <div id="app">
@@ -262,7 +234,6 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Add loading states to buttons
         document.addEventListener('DOMContentLoaded', function() {
             const buttons = document.querySelectorAll('.btn[data-loading]');
             buttons.forEach(button => {
